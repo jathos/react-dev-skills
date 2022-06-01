@@ -1,7 +1,11 @@
+import SkillListItem from "./SkillListItem";
+
 function SkillList() {
     return (
         <ul>
-            <li>SkillListItem</li>
+            <SkillListItem />
+            <SkillListItem />
+            <SkillListItem />
         </ul>
     )
 
