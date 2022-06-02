@@ -1,6 +1,8 @@
-function SkillListItem() {
+import './SkillListItem.css'
+
+function SkillListItem({ name, level }) {
     return (
-        < li > SkillListItem</li >
+        < li className="SkillListItem">{name} <span className="level">{level}</span></li >
     )
 };
 

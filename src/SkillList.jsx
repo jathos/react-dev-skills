@@ -1,11 +1,10 @@
 import SkillListItem from "./SkillListItem";
+import './SkillList.css';
 
-function SkillList() {
+function SkillList({ devSkills }) {
     return (
-        <ul>
-            <SkillListItem />
-            <SkillListItem />
-            <SkillListItem />
+        <ul className="SkillList">
+            {devSkills.map((skill, idx) => (<SkillListItem name={skill.name} level={skill.level} key={idx} />))}
         </ul>
     )
 
