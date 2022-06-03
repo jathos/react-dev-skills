@@ -1,18 +1,29 @@
 import './NewSkillForm.css';
 import { useState } from "react";
 
-function NewSkillForm() {
-    const [formSkills, setFormSkills] = useState({
+function NewSkillForm({ addNewSkill }) {
+    const [newSkill, setNewSkill] = useState({
         name: "",
         level: 3
-    })
+    });
+
+    function handleAddNewSkill(evt) {
+        evt.preventDefault();
+        const newSkillData = { [evt.target[0].name]: evt.target[0].value, [evt.target[1].name]: evt.target[1].value }
+        console.log(newSkillData)
+        addNewSkill(newSkillData);
+        setNewSkill({
+            name: "",
+            level: 3
+        });
+    };
 
     return (
-        <form className="NewSkillForm">
+        <form className="NewSkillForm" onSubmit={handleAddNewSkill}>
             <label>Skill</label>
-            <input value={formSkills.name} onChange={(evt) => setFormSkills(evt.target.value)} type="textfield"></input>
+            <input name="name" value={newSkill.name} onChange={(evt) => setNewSkill(evt.target.value)} type="textfield"></input>
             <label>Level</label>
-            <select value={formSkills.level} onChange={(evt) => setFormSkills(evt.target.value)}>
+            <select name="level" value={newSkill.level} onChange={(evt) => setNewSkill(evt.target.value)} required>
                 <option value={1}>1</option>
                 <option value={2}>2</option>
                 <option value={3}>3</option>
